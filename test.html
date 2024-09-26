@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select an Option</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        form2 {
+            background-color: powderblue;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        select:hover {
+            border-color: #007BFF;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="/" method="POST">
+        <h1>Select an Option</h1>
+        <select name="optionsss">
+            {% for item in data %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% else %}
+                <option disabled>No options available</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <hr>
+    <pre>
+    {% if selected_option %}
+        <h2>You selected: {{ selected_option }}</h2>
+    {% endif %}
+    </pre>
+
+    <form action="/1" method="POST" enctype="multipart/form-data">
+        <h1>Upload a File</h1>
+        <input type="file" name="file" accept=".txt,.pdf,.png,.jpg,.jpeg,.gif">
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if uploaded_file_name %}
+        <h2>File uploaded: {{ uploaded_file_name }}</h2>
+    {% endif %}
+    
+
+
+</body>
+
+</html>
